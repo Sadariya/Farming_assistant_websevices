@@ -1,4 +1,3 @@
-
 def login_signup_data (request,signup_form,signup_model,messages,settings,send_mail,redirect):
     color = 'success'
     if request.method == 'POST':
@@ -67,6 +66,7 @@ def contact_data (request,contactus_form,settings,send_mail,messages):
                 msg = 'Dear visitor, \n\nThank you for visit our site \nOur team will contact soon \nAnd Your Query will be solved by our exert team \n\nFor More information Contact Us on \n+91 91234 56789'
                 Mail = settings.EMAIL_HOST_USER
                 user_mail = [request.POST['email']]
+                print ('This is username',user_mail)
 
                 send_mail(subject=subject, message=msg,
                         from_email=Mail, recipient_list=user_mail)

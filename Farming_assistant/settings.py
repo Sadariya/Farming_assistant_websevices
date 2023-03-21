@@ -166,7 +166,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'gauravsadariya789@gmail.com'
-EMAIL_HOST_PASSWORD = 'orrtkbfmxwhsdgio'
+EMAIL_HOST_PASSWORD = 'aigtpuqhulzgzayn'
 
 
 # jazzmin Admin panel

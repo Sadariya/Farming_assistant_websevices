@@ -351,7 +351,7 @@
     </div>
 
     <!-- retailer ads start -->
-    <div class="container" style="background-color: #00BCD4; border-width: 2mm;">
+    <div class="container" >
         <div class="row">
             {% for i in postdata%}
             <div class="col">
@@ -360,6 +360,7 @@
                     <p class="h4 pt-4">{{i.option}}</p>
                     <p class="p1 text-muted my-5 text"
                         style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                        Delear :- {{i.dealer_name}} <br><br>
                         {{i.crop_name}} :- {{i.crop_about}} <br><br>
                         Quantity :- {{i.crop_quantity}}
                     </p>

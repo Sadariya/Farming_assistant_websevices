@@ -166,16 +166,120 @@
             {% for i in Dealer_data%}
             {% if i.confirmation == 'Accept' %}
 
-            <div class=" col my-5" >
+            <div class=" col my-5">
                 <div class="card " style="width: 18rem;">
                     <img src="/{{i.crop_file}}" style="height: 200px;" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{i.crop_name}}</h5>
                         <p class="card-text">
+                            Dealer :- {{i.dealer_name}} <br><br>
                             About :- {{i.crop_about}} <br><br>
                             Quantity :- {{i.crop_quantity}}
                         </p>
-                        <a href="#" class="btn btn-primary">Sell</a>
+                        <!-- Button trigger modal -->
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                            data-bs-target="#{{i.id}}">Sell the crop</button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Your Post</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <div class="col-lg-12 col-md-12 my-2">
+                                                <div class="form-floating">
+                                                    <input type="text" name="dealer_name" value="{{i.dealer_name}}"  class="form-control" placeholder="FLYING FROM">
+                                                    <label>Delear Name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 my-2">
+                                                <div class="form-floating">
+                                                    <input type="text" name="farmer_name" value="{{username}}"  class="form-control" placeholder="FLYING FROM">
+                                                    <label>Farmer Name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 my-2">
+                                                <div class="form-floating">
+                                                    <input type="text" name="crop_id" value="{{i.id}}"
+                                                        class="form-control" placeholder="FLYING FROM">
+                                                    <label>Crops ID</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 my-2">
+                                                <div class="form-floating">
+
+                                                    <select class="form-select" name="option">
+                                                        <option selected="" hidden="">{{i.option}}</option>
+                                                        <option>seeds</option>
+                                                        <option>Crops</option>
+                                                        <option>new rates</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 my-2">
+                                                <div class="form-floating">
+                                                    <input type="text" name="crop_name" value="{{i.crop_name}}"
+                                                        class="form-control" placeholder="FLYING FROM">
+                                                    <label>Crops Name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 my-2">
+                                                <div class="form-floating">
+                                                    <input type="text" name="crop_about" value="{{i.crop_about}}"
+                                                        class="form-control" placeholder="FLYING TO">
+                                                    <label>About Crops</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 my-2">
+                                                <div class="form-floating">
+                                                    <input type="file" name="crop_file" value="{{i.crop_file}}" id=""
+                                                        class="form-control" placeholder="FLYING TO">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 my-2">
+                                                <div class="form-floating">
+                                                    <input type="text" name="crop_quantity" value="{{i.crop_quantity}}"
+                                                        class="form-control" placeholder="FLYING TO">
+                                                    <label>Quantity in kgs</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 my-2">
+                                                <select class="form-select" aria-label="Default select example"
+                                                    name="confirmation">
+                                                    <option>{{i.confirmation}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 my-2">
+                                                <select class="form-select" aria-label="Default select example"
+                                                    name="sell">
+                                                    <option>{{i.sell}}</option>
+                                                    <option>Sell</option>
+                                                    <option>Buy</option>
+                                                </select>
+                                            </div>
+                                           
+                                            <div class="col-12 mt-4">
+                                                <center>
+                                                    <button class="btn btn-success " name="confirm" value="confirm"
+                                                        type="submit">
+                                                        Done
+                                                    </button>
+                                                </center>
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

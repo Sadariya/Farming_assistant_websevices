@@ -35,6 +35,13 @@ class editpost_delete_form (forms.ModelForm):
         fields = ['option', 'crop_name', 'crop_file',
                   'crop_about', 'crop_quantity', 'confirmation']
 
+class editpost_farmer_delete_form (forms.ModelForm):
+
+    class Meta:
+
+        model = retailer_model
+        fields = ['farmer_name','sell']
+
 
 class farmercomplaint_form (forms.ModelForm):
 

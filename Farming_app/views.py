@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import signup_model, retailer_model, farmercomplain_model, farmertips_model, feedback_model
-from .forms import signup_form, update_form, retailer_form, editpost_delete_form, farmercomplaint_form, farmertips_form, feedback_form, farmer_accept_form, contactus_form
+from .forms import signup_form, update_form, retailer_form, editpost_delete_form, farmercomplaint_form, farmertips_form, feedback_form, farmer_accept_form, contactus_form,editpost_farmer_delete_form
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.core.mail import send_mail
@@ -299,6 +299,20 @@ def farmerpage(request):
     role = request.session.get('role')
 
     Dealer_data = retailer_model.objects.all()
+
+    if request.method == 'POST':
+
+        crop_id = request.POST['crop_id']
+        crop_data = retailer_model.objects.get(id=crop_id)
+
+        crop_form = editpost_farmer_delete_form(request.POST,request.FILES)
+
+        if crop_form.is_valid():
+            crop_form = editpost_farmer_delete_form(request.POST,request.FILES,instance=crop_data)
+            crop_form.save()
+            print ('success')
+        else :
+            print (crop_form.errors)
 
     return render(request, 'farmerpage.html', {'username': username, 'role': role, 'Dealer_data': Dealer_data})
 

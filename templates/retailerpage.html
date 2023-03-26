@@ -212,6 +212,12 @@
                     {% csrf_token %}
                     <div class="col-lg-6 col-md-12">
                         <div class="form-floating">
+                            <input type="text" name="dealer_name" value="{{username}}"  class="form-control" placeholder="FLYING FROM">
+                            <label>Delear Name</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-floating">
                             <select class="form-select" name="option">
                                 <option selected="" hidden="">Select</option>
                                 <option>seeds</option>

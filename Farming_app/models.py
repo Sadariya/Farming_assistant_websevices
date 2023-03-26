@@ -19,12 +19,15 @@ class signup_model (models.Model):
 class retailer_model (models.Model):
 
     created = models.DateTimeField(default=datetime.now(),blank=True)
+    dealer_name = models.CharField(max_length=100)
+    farmer_name = models.CharField(max_length=50,default=None)
     option = models.CharField(max_length=15)
     crop_name =models.CharField(max_length=50)
     crop_about = models.CharField(max_length=150)
     crop_file = models.FileField(upload_to='static/upload',blank=True)
     crop_quantity = models.IntegerField()
     confirmation = models.CharField(max_length=15,blank=True)
+    sell = models.CharField(max_length=50,blank=True)
 
 class farmercomplain_model (models.Model):
 
